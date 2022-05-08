@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<style type ="text/css">
+#salir{
+float:right;
+}
+.container{
+position:relative;
+}
+
+#buscador{
+ position:absolute;
+ top:-4;
+ right:70;
+}
+</style>
+<title>BuyCars</title>
+
+<!-- Bootstrap core CSS -->
+<link
+	href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="https://v4-alpha.getbootstrap.com/examples/album/album.css"
+	rel="stylesheet">
+
+</head>
+
+<body>
+   <script type="text/javascript">
+    alert("Bienvenido!");
+    </script>
+    
+	<div class="collapse bg-inverse" id="navbarHeader">
+	 
+		<div class="container">
+         
+			<div class="row">
+				<div class="col-sm-8 py-4">
+					<h4 class="text-white">BuyCars</h4>
+					<p class="text-muted">Se trata de una Web de compra/venta de
+						coches en la que un usuario podrá ver una gran variedad de coches
+						para comprar. En la parte pública de la web, el usuario podrá
+						hacer una búsqueda filtrada para encontrar el vehículo que desee,
+						ver su descripción, características, precio, etc. También tendrá
+						la opción de loguearse o registrarse para acceder a la parte
+						privada de la aplicación.</p>
+
+					<p class="text-muted">En la parte privada el usuario podrá
+						subir su vehículo para venderlo, negociar con otro usuario o
+						concretar una compra de un vehículo, además de todas las
+						funcionalidad de la parte pública de la web.
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-inverse bg-inverse">
+		<div class="container d-flex justify-content-between">
+			<a href="#" class="navbar-brand">BuyCars</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarHeader" aria-controls="navbarHeader"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+
+
+	<div class="album text-muted">
+    
+    
+    
+		<div class="container">
+		
+		<div class="row">
+				<div class="col-sm-8 py-4">	
+					<p>
+					    {{#admin}}
+						<a href="login.html" class="btn btn-primary">Login</a>
+						<a href="nuevoUsuario.html" class="btn btn-secondary">Nuevo usuario</a>
+						{{/admin}}
+						<a href="nuevoAnuncio.html" class="btn btn-secondary">Nuevo anuncio</a>
+						{{#admin}}
+						<a href="nuevaCategoria.html" class="btn btn-secondary">Nueva categoría</a>
+						{{/admin}}
+					
+					</p>
+				</div>	
+				{{#admin}}
+				<div class="col-sm-4 py-4">
+					<h4 class="text-black">Estadísticas de base de datos</h4>
+					<ul class="list-unstyled">
+						<li><a href="#" class="text-black">{{usuarios}} usuarios | </a>
+						<a href="#" class="text-black"> {{anunciosCount}} anuncios | </a>
+						<a href="#" class="text-black"> {{categorias}} categorias | </a>
+						<a href="#" class="text-black"> {{coches}} coches</a></li>
+					</ul>
+				</div>
+				{{/admin}}
+			</div>
+			<h1 class="jumbotron-heading">Anuncios disponibles</h1>
+			<div class="row">
+				{{#anuncios}}
+				<div class="card">
+					<!-- <img data-src="hhttp://static.motor10.es/img/slide/q5.png">-->
+
+					<img data-src="https://livedemo00.template-help.com/muse_51228/images/gall_item{{-index}}.jpg" alt="100%x280" style="height: 280px; width: 100%; display: block;"
+						src="https://livedemo00.template-help.com/muse_51228/images/gall_item{{-index}}.jpg" data-holder-rendered="true">
+					<p class="card-text">
+						<a href="/anuncio/{{-index}}">{{nombre}}	{{asunto}}</a>
+					</p>
+				</div>
+				{{/anuncios}}
+
+
+				<div class="container">
+					<ul class="pagination pagination-lg">
+						<li><a href="/?page=1&size=2">1</a></li>
+						<li><a href="/?page=2&size=2">2</a></li>
+						<li><a href="/?page=3&size=2">3</a></li>
+						<li><a href="/?page=4&size=2">4</a></li>
+						<li><a href="/?page=5&size=2">5</a></li>
+					</ul>
+					
+				</div>
+			</div>
+
+		</div>
+		<div id = "salir">
+			<form action="/logout" method="post">
+			<input type="submit" value="Salir" class= "btn btn-secondary" />
+			<input type="hidden" name="_csrf" value="{{token}}"/>
+		   </form>
+		</div>
+	</div>
+
+	<footer class="text-muted">
+		<div class="container">
+			<p class="float-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>BuyCars</p>
+		</div>
+	</footer>
+	
+	
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+		crossorigin="anonymous"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+	</script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://v4-alpha.getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+	<script>
+		$(function() {
+			Holder.addTheme("thumb", {
+				background : "#55595c",
+				foreground : "#eceeef",
+				text : "Thumbnail"
+			});
+		});
+	</script>
+	<script
+		src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>
